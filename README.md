@@ -840,11 +840,47 @@
 - 함수 - [쿼리1](./day06/6.FUNCTION_원형.sql), [쿼리2](./day06/6.FUNCTION.sql)
     - 내장함수에 없는 기능의 함수를 추가로 개발하는 것
     - 함수 파라미터, 리턴값이 존재
+    - 일반 쿼리문에 포함가능
 
+- 생성
+    - DBeaver 해당 DB Procedure 폴더에서 마우스 오른쪽 버튼 > Create New Procedure
+    - Name, 필요한 함수명 입력
+    - Type, FUNCTION 선택
+
+    ![alt text](image-23.png)
+
+    - 작성 후 Save 클릭(Execute)
 
 #### 저장 프로시저
 
+- 저장 프로시저 
+    - 함수와 달리 리턴값이 없음, 단 OUT 파라미터로 결과를 돌려받을 순 있음
+    - 일반 쿼리문에 포함불가
+    - 단독 실행 또는 배치(스케줄에 따라) 실행
+    - 사용자 없는 새벽에 `대량처리` 수행할 때 
+
+- 생성
+    - DBeaver 해당 DB Procedure 폴더에서 마우스 오른쪽 버튼 > Create New Procedure
+    - Name, 필요한 프로시저명 입력
+    - Type, PROCEDURE 선택
+    - 작성 후 Save 클릭(Execute)
+
+#### 커서
+
+- Curosr 
+    - 마우스 커서와 동일하게 테이블의 한 위치를 가리키는 객체
+    - 테이블의 데이터를 한 행씩 처리하기위해서 사용
+    - CURSOR, OPEN, FETCH, CLOSE
+    - 일반 프로그래밍 언어와 연동시 사용
+
 #### 트리거
+
+- Trigger 
+    - 방아쇠를 뜻함. 하나의 테이블에서 INSERT, UPDATE, DELETE 문이 실행되면 다른 테이블이나 다른 처리가 자동으로 실행되는 저장 프로그램 중 하나
+    - Before Trigger보다 After Trigger가 많이 사용
+    - 시스템 로그 기능에 많이 사용됨
+
+    ![alt text](image-24.png)
 
 ### C/C++ MySQL연동
 
@@ -855,4 +891,5 @@
 #### ERD 작성
 
 - 정규화, 반정규화, 개념/논리/물리다이어그램
+
 
