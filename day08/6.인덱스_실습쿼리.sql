@@ -59,4 +59,3 @@ CREATE INDEX idx_orders_city_and_amount ON orders_big(city, amount);
 
 
 
-
