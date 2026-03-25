@@ -1216,30 +1216,21 @@
 ### C/C++ MySQL연동
 
 - 개발방법
-    - MySQL 8.0 이상
-    - MySQL Connector/C++ 라이브러리 설치
+    - MySQL 8.0 이상 (8.0.45)
+    - MySQL Server 자체 라이브러리 사용
     - Visual Studio 프로젝트 생성
     - C++ 코드 작성
 
-#### MySQL Connector/C++ 라이브러리
+#### MySQL Server 8.0 설치
 
-- https://dev.mysql.com/downloads/connector/cpp/
+- https://dev.mysql.com/downloads/mysql/8.0.html
     - Windows (x86, 64-bit), MSI Installer 다운로드
-    - C:\Program Files\MySQL\MySQL Connector C++ 9.6\ 에 설치됨
 
-- 시스템 속성 (sysdm.cpl)
-    - 고급 > 환경 변수 > path 에 MySQL 관련 dll이 위치하는 경로 추가
-    - VS나 콘솔 재시작
+    ![alt text](image-36.png)
 
-#### Visual Studio 프로젝트 속성
+    - 간단하게 설치 완료
 
-- 프로젝트 속성 (부모 기본값 상속 체크 반드시)
-    - C/C++ > 일반 > 추가 포함 디렉토리
-        - C:\Program Files\MySQL\MySQL Connector C++ 9.6\include 추가
-    - 링커 > 일반 > 추가 라이브러리 디렉토리
-        - C:\Program Files\MySQL\MySQL Connector C++ 9.6\lib64\vs14 추가
-    - 링커 > 입력 > 추가 종속성
-        - mysqlcppconn.lib
+- MySQL C API 사용
         
 #### 텔넷 클라이언트 설정
 
@@ -1250,7 +1241,43 @@
 
     ![alt text](image-25.png)
 
+#### Visual C++ 프로젝트 설정
+
+- 생성 후 Visual C++ 프로젝트 속성
+    - VC++ 디렉토리 > 일반 > 포함 디렉토리 
+        - C:\Program Files\MySQL\MySQL Server 8.0\include
+    - VC++ 디렉토리 > 일반 > 라이브러리 디렉토리
+        - C:\Program Files\MySQL\MySQL Server 8.0\lib
+
+    ![alt text](image-37.png)
+
+    - 링커 > 입력 > 추가종속성 
+        - libmysql.lib 입력
+
+    ![alt text](image-38.png)
+
+- MySQL 추가 라이브러리 디렉토리
+    - libmysql.dll 파일 프로젝트로 복사
+
+    ![alt text](image-39.png)
+
+- 시스템 속성 sysdm.cpl
+    - 고급 탭 > 환경변수 > 시스템 변수 path
+        - C:\Program Files\MySQL\MySQL Server 8.0\bin 추가
+
+    ![alt text](image-40.png)
 
 
+- Visual Studio 재시작
 
+#### C++ MySQL 연동 
+
+- 기본 연결확인 구현
+- 테이블 데이터 확인 
+    - 쿼리문 문자열 마지막 ; 무조건 제거(오류발생)
+
+- MySQL 연동 순서
+    1. 콘솔 인코딩 UTF-8 설정
+    2. 연결, 행데이터, 결과 구조체 변수, 포인터 변수 선언
+    3. 
 
