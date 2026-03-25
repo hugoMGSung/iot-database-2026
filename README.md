@@ -1272,12 +1272,55 @@
 
 #### C++ MySQL 연동 
 
-- 기본 연결확인 구현
+- 기본 연결확인 구현 
 - 테이블 데이터 확인 
     - 쿼리문 문자열 마지막 ; 무조건 제거(오류발생)
 
-- MySQL 연동 순서
+- MySQL 연동 순서 - [소스](./day09/MySqlMadangApp/main.cpp)
     1. 콘솔 인코딩 UTF-8 설정
     2. 연결, 행데이터, 결과 구조체 변수, 포인터 변수 선언
-    3. 
+    3. MySQL 초기화
+    4. 접속정보로 접속
+    5. 서버 문자셋 UTF-8 설정
+    6. 쿼리 실행
+    7. 결과 메모리 저장
+    8. 한 행씩 Fetch, 출력(SELECT에 한함) 
+    9. 결과 메모리 해제
+    10. 접속 종료
 
+#### MySQL CRUD 앱 구현
+
+- Book 테이블 CRUD 테스트 - [소스](./day09/MySqlCrudTest/main.cpp)
+
+- C학습 AddressBook 프로젝트와 비교
+    - 텍스트파일, File IO vs MySQL DB
+    - contact 구조체 vs MySQL 자체 구조체 사용
+    - 파일관련 작업 vs MySQL 함수로 처리
+
+![alt text](image-41.png)
+
+- MySQL C API 함수목록
+    - mysql_init() - MySQL DB연결 초기화
+    - mysql_real_connect() - 연결 시도
+    - mysql_error() - 에러메시지 확인
+    - mysql_query() - 쿼리실행 
+    - mysql_store_result() - 쿼리실행결과 메모리 저장
+    - mysql_fetch_row() - 한 행씩 읽어오기
+    - mysql_free_result() - 쿼리실행결과 메모리 해제
+    - mysql_affected_row() - 쿼리실행 처리 행수 리턴
+    - mysql_close() - DB연결 종료
+
+- MySQL Connector/C++ 
+    - MySQL C API를 C++로 클래스화 한 라이브러리
+    - 객체화, 예외처리 기능 고급화
+    - 운영체제 환경 영향 지대
+    - 설정 난이도 높음
+    - Visual Studio 설정 까다로움
+    - 유지보수 구조적으로는 좋음
+
+- MySQL C API
+    - C언어 기반
+    - 함수 중심
+    - 사용난이도 낮음
+    - 설정난이도 낮음
+    - 예외처리를 직접 처리
